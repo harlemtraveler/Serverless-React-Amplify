@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "amplifynotetaker",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\student_perscholas\\Git\\github-repos\\Serverless-React-Amplify\\amplify-notetaker\\amplify\\backend\\api\\amplifynotetaker\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamplifynotetakerd569dcf4"
+    }
+  }
+}
