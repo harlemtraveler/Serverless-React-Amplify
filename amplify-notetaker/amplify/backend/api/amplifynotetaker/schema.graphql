@@ -2,7 +2,67 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 #input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Note @model {
+type Market
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @searchable {
   id: ID!
   name: String!
+  products: [Product] @hasMany(indexName: "MarketProducts")
+  tags: [String]
+  owner: String!
+}
+
+type Product
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  marketID: ID! @index(name: "MarketProducts")
+  description: String!
+  market: Market @belongsTo
+  file: S3Object!
+  price: Float!
+  shipped: Boolean!
+  owner: String
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type User
+  @model(
+    queries: { get: "getUser" }
+    mutations: { create: "registerUser", update: "updateUser" }
+    subscriptions: null
+  ) {
+  id: ID! @primaryKey
+  username: String!
+  email: String!
+  register: Boolean
+  orders: [Order] @hasMany(indexName: "UserOrders")
+}
+
+type Order
+  @model(
+    queries: null
+    mutations: { create: "createOrder" }
+    subscriptions: null
+    timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" }
+  ) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "UserOrders")
+  products: [Product] @hasMany
+  user: User @belongsTo(fields: ["userID"])
+  shippingAddress: ShippingAddress
+}
+
+type ShippingAddress {
+  city: String!
+  country: String!
+  address_line1: String!
+  address_line2: String
+  address_state: String!
+  address_zip: String!
 }

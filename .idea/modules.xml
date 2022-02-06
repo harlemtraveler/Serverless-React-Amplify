@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AmplifyGraphQL_MarketPlace/.idea/AmplifyGraphQL_MarketPlace.iml" filepath="$PROJECT_DIR$/../AmplifyGraphQL_MarketPlace/.idea/AmplifyGraphQL_MarketPlace.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Serverless-React-Amplify.iml" filepath="$PROJECT_DIR$/.idea/Serverless-React-Amplify.iml" />
     </modules>
   </component>
