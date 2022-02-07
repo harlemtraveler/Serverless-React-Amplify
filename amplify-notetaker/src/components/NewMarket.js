@@ -9,3 +9,5 @@ class NewMarket extends React.Component {
         )
     }
 }
+
+export default NewMarket;

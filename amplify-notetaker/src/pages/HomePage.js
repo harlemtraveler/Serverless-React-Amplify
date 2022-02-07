@@ -7,3 +7,5 @@ class HomePage extends React.Component {
         return <div>Home</div>
     }
 }
+
+export default HomePage;

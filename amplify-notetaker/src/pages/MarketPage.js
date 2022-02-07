@@ -9,3 +9,5 @@ class MarketPage extends React.Component {
         );
     }
 }
+
+export default MarketPage;
